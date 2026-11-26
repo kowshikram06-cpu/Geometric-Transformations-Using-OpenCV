@@ -72,10 +72,10 @@ Read the input image in color mode.
 ##  Program
 
 ### Developed By:
-**Name:** ANGELIN GRACY R
+**Name:** KOWSHIK RAM S
 
 ### Register No:
-212225240009
+212225230143
 
 ---
 
