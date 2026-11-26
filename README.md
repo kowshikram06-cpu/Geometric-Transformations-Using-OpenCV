@@ -72,41 +72,94 @@ Read the input image in color mode.
 ##  Program
 
 ### Developed By:
-**Name:** ____________________________  
+**Name:** ANGELIN GRACY R
 
 ### Register No:
-____________________________  
+212225240009
 
 ---
 
 ##  Output
 
-### Image Translation
-- Original image is displayed  
-- Translated image (shifted right and down) is displayed  
+```
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 
-### Image Scaling
-- Original image is displayed  
-- Downscaled image (0.5×) is displayed  
-- Upscaled image (2×) is displayed  
+image = cv2.imread('Qn.jpeg') 
 
-### Image Shearing
-- Original image is displayed  
-- Horizontally sheared image is displayed  
-- Vertically sheared image is displayed  
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB)) 
+plt.title("Original Image")  
+plt.axis('off') 
+```
 
-### Image Reflection
-- Original image is displayed  
-- Horizontally flipped image is displayed  
-- Vertically flipped image is displayed  
-- Both-axis flipped image is displayed  
 
-### Image Rotation
-- Original image is displayed  
-- 45° rotated image is displayed  
-- 90° rotated image is displayed  
+<img width="516" height="372" alt="download" src="https://github.com/user-attachments/assets/4fe4b912-19fd-4c69-9641-2f59780edbd2" />
 
----
+```
+tx, ty = 100, 50 
+M_translation = np.float32([[1, 0, tx], [0, 1, ty]])  
+
+translated_image = cv2.warpAffine(image, M_translation, (image.shape[1], image.shape[0])) 
+plt.imshow(cv2.cvtColor(translated_image, cv2.COLOR_BGR2RGB))  
+plt.title("Translated Image")  
+plt.axis('off')
+```
+<img width="516" height="372" alt="download" src="https://github.com/user-attachments/assets/8814fce3-3dac-449d-adfa-22baec5089db" />
+
+```
+fx, fy = 5.0, 2.0  
+scaled_image = cv2.resize(image, None, fx=fx, fy=fy, interpolation=cv2.INTER_LINEAR)
+plt.imshow(cv2.cvtColor(scaled_image, cv2.COLOR_BGR2RGB))  
+plt.title("Scaled Image")  
+plt.axis('off')
+```
+<img width="516" height="173" alt="download" src="https://github.com/user-attachments/assets/ed1899e7-e2ff-4f65-a5e7-1e0daecdbed4" />
+
+```
+fx, fy = 5.0, 2.0  
+scaled_image = cv2.resize(image, None, fx=fx, fy=fy, interpolation=cv2.INTER_LINEAR)
+plt.imshow(cv2.cvtColor(scaled_image, cv2.COLOR_BGR2RGB))  
+plt.title("Scaled Image")  
+plt.axis('off')
+```
+<img width="516" height="372" alt="download" src="https://github.com/user-attachments/assets/a18b5854-208e-4075-9269-fbbd19e8c02d" />
+
+```
+fx, fy = 5.0, 2.0  
+scaled_image = cv2.resize(image, None, fx=fx, fy=fy, interpolation=cv2.INTER_LINEAR)
+plt.imshow(cv2.cvtColor(scaled_image, cv2.COLOR_BGR2RGB))  
+plt.title("Scaled Image")  
+plt.axis('off')
+```
+<img width="516" height="372" alt="download" src="https://github.com/user-attachments/assets/2939368e-79eb-47bf-b460-d49cf4a880ab" />
+
+```
+# Step 6: Image Rotation
+(height, width) = image.shape[:2]  
+angle = 45  # Rotation angle in degrees (rotate by 45 degrees)
+center = (width // 2, height // 2)  # Set the center of rotation to the image center
+M_rotation = cv2.getRotationMatrix2D(center, angle, 1)  
+# getRotationMatrix2D: Takes the center of rotation, angle, and scale factor (1 means no scaling)
+rotated_image = cv2.warpAffine(image, M_rotation, (width, height))  
+plt.imshow(cv2.cvtColor(rotated_image, cv2.COLOR_BGR2RGB)) 
+plt.title("Rotated Image")  
+plt.axis('off')
+```
+<img width="516" height="372" alt="download" src="https://github.com/user-attachments/assets/99ec615d-6c95-44f1-a11f-640633be9e71" />
+
+```
+# Step 7: Image Cropping
+x, y, w, h = 100, 100, 200, 150  
+
+cropped_image = image[y:y+h, x:x+w]
+
+plt.imshow(cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB))  
+plt.title("Cropped Image")  # Set title
+plt.axis('off')
+```
+<img width="512" height="410" alt="download" src="https://github.com/user-attachments/assets/c5c049d3-7b5f-4671-b39c-e700011e9c77" />
+
 
 ##  Result
 
